@@ -87,9 +87,8 @@ export function accountsInScope(alias = "a"): string {
  *
  * ⚠️ THEY MUST NOT OVERLAP, and together they must be exactly everybody
  * `contactsInScope` leaves out — otherwise a person appears twice, or vanishes
- * from both sides and nobody notices. Measured 2026-08-26:
- *   18,600 in scope + 24,243 exclusions + 5,718 bad emails + 1,196 pending
- *   = 49,757, which is every contact in the database.
+ * from both sides and nobody notices. The four counts (in scope + exclusions + bad emails + pending) must sum
+ *   to every contact in the database.
  * `scripts/check-buckets.mjs` re-runs that sum; run it after any change here.
  *
  * Segment wins over address, which is why a dead address inside Pending stays

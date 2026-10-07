@@ -13,7 +13,7 @@ import { query, one } from "./db";
  *
  *   set-password  5 days   agreed 2026-08-16. A new account holds nothing yet,
  *                          and a link that dies is a support call.
- *   reset         2 hours  a live account reaches eighteen thousand contacts,
+ *   reset         2 hours  a live account reaches tens of thousands of contacts,
  *                          so a forgotten-password link sitting in an inbox for
  *                          five days is a different proposition entirely.
  *   decide        30 days  an approver may be on holiday; the request should

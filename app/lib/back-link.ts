@@ -3,7 +3,7 @@
  *
  * A record page's "← Contacts" used to be a plain link to /contacts, which
  * threw away whatever you had done to find the person: search for Steve, open
- * Steve, come back to eighteen thousand contacts and start again.
+ * Steve, come back to the full contact list and start again.
  *
  * So a row carries the list's own query string with it, and the record page
  * hands it back. Nothing is stored and nothing is guessed — the address bar of

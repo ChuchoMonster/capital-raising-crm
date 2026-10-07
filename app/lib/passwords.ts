@@ -9,7 +9,7 @@ const scrypt = promisify(scryptCb) as (p: string, s: Buffer, k: number, o?: obje
  *
  * scrypt from Node's own crypto, not a dependency. It is a memory-hard hash
  * designed for exactly this, it ships with the runtime, and it removes a
- * package from the supply chain of an app that holds eighteen thousand
+ * package from the supply chain of an app that holds tens of thousands of
  * contacts. bcrypt would be equally correct and brings a native build.
  *
  * Parameters are stored IN the hash string. A cost raised in two years' time

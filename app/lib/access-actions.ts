@@ -19,7 +19,7 @@ import { approvers, findPerson, findPersonById, normalise, logAccess } from "./a
  *
  * NOBODY HERE EVER TYPES SOMEBODY ELSE'S PASSWORD. The obvious version of "add
  * a user" has the person adding them invent a password and then tell them —
- * over email, or a chat window — which puts the key to eighteen thousand
+ * over email, or a chat window — which puts the key to tens of thousands of
  * private addresses into a channel nobody controls, and leaves it in a message
  * history for ever. A link costs the same click and avoids all of it.
  *

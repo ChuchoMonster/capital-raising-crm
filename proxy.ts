@@ -10,7 +10,7 @@ import { NextResponse } from "next/server";
  * This is deliberately the coarsest check in the app: is there a session at
  * all. It is not the only check — every page that reads data guards itself as
  * well (see `requireUser`). Two independent gates means one missed `await`
- * somewhere does not expose eighteen thousand people.
+ * somewhere does not expose tens of thousands of people.
  *
  * The reason this exists as middleware rather than a layout: files under
  * `public/` never run React. `/index/contacts.json` is served straight off

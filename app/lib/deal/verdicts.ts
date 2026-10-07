@@ -126,7 +126,7 @@ interface Candidate {
  * reply to us" and "their mail".
  *
  * The line NOT crossed either way: every reply from any firm Halden Ridge has ever
- * emailed — roughly 680 a fortnight of ordinary business mail, and exactly
+ * emailed — hundreds a fortnight of ordinary business mail, and exactly
  * where a wrong "Passed" would come from.
  */
 async function candidates(limit: number): Promise<Candidate[]> {

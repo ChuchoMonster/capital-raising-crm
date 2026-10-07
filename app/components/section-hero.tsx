@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 /**
  * The photographic band at the top of a section, carrying the title and the
  * filter cards. The image stops here rather than running behind the list —
- * a photograph under 18,000 rows of small type makes the type harder to read
+ * a photograph under thousands of rows of small type makes the type harder to read
  * and the photograph impossible to see.
  */
 export function SectionHero({
