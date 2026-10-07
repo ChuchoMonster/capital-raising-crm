@@ -16,7 +16,7 @@
  * number that has already gone out in an email must never mean two raises.
  *
  * No database and no `server-only` here on purpose: this is the part with the
- * decisions in it, and it is checked directly by scripts/check-deal-naming.ts.
+ * decisions in it, and it is checked directly by tests/deal-naming.test.ts.
  */
 
 /** How a numbered deal is written. Everything below is built from this one shape. */

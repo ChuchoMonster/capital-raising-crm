@@ -1,5 +1,7 @@
 # Capital-raising CRM
 
+![tests](https://github.com/ChuchoMonster/capital-raising-crm/actions/workflows/tests.yml/badge.svg)
+
 A private CRM for a small capital-raising advisory: a firm that places equity and
 debt for mining and energy companies by matching each raise to the right
 institutional investors, emailing them from the partners' own Outlook
@@ -100,6 +102,29 @@ Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4,
 Postgres via `pg`, Auth.js (next-auth v5), Microsoft Graph, the Anthropic
 Messages API, `pdf-lib`, `unpdf`, `word-extractor` and `fflate`.
 
+## Tests
+
+Unit tests (Vitest) cover the rules the CRM depends on. They need no database,
+network or credentials: Postgres, Microsoft Graph and the Anthropic API are
+replaced with in-test fakes, and GitHub Actions runs them on every push.
+
+- **Investor matching:** a firm is ruled out only by a known fund size or a
+  known debt-only mandate, never by a blank field; tiers count unknowns; mineral
+  matching is whole-word ("green" is not REE, "platinum" is not tin).
+- **Claim checking:** quotes Claude returns are checked against the source
+  document with six-word overlap. Verbatim and spliced quotes pass; invented
+  ones, and real ones with a figure changed, fail, and the field is dropped.
+- **Reply verdicts:** Accepted or Passed is filed only with a quote that is in
+  the reply, and only against a raise that can be identified; everything else
+  stays Open.
+- **Import, naming and access:** CSV/.xlsx parsing, column mapping and
+  de-duplication, repeat-deal numbering, password hashing, link lifetimes and
+  the sign-in allow-list.
+
+```bash
+npm test
+```
+
 ## Running it locally with the demo data
 
 Requirements: Node 20+, and Postgres 15+ with the `pg_trgm` extension available.
@@ -121,12 +146,6 @@ Sign in with `demo@example.com` and the `DEMO_PASSWORD` you chose. Microsoft
 sign-in, mailbox sync, drafting, Claude features and file storage need real
 credentials in `.env.local`; without them, searching, matching, outreach tracking and the teaser
 view all work on the demo data.
-
-The deal-naming rules have a small standalone check:
-
-```bash
-node --import ./scripts/ts-resolve.mjs --experimental-strip-types scripts/check-deal-naming.ts
-```
 
 `scripts/migrate-*.mjs` are the one-off schema migrations used in production;
 the demo schema already includes them.
