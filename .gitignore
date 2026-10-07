@@ -1,0 +1,36 @@
+# dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+.vercel
+*.tsbuildinfo
+tsconfig.tsbuildinfo
+next-env.d.ts
+
+# secrets: every .env file except the template
+.env*
+!.env.example
+
+# logs
+*.log
+
+# local demo database and screenshots
+demo/pgdata/
+demo/shots/
+
+# data files never belong in this repo
+*.csv
+*.jsonl
+*.ndjson
+*.sqlite
+*.db
+/snapshots/
+/data/
+/scratch/
+
+# optional local teaser fallback photograph
+public/img/teaser-fallback.jpg
+
+# os
+.DS_Store

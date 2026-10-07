@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Halden Ridge Advisors — design tokens
+   A near-monochrome palette: #000 / #FFF / #CCC plus two accent colours.
+   Everything semantic below (status colours) is an addition to that base.
+   ───────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* ── surface ── */
+  --color-ground: #f7f8f9; /* page — faintly cool so panels lift */
+  --color-paper: #ffffff; /* cards, panels */
+  --color-sunken: #f2f4f6; /* table header, collapsed section header */
+  --color-line: #e4e7ea; /* hairlines, table rules */
+  --color-line-strong: #cccccc; /* BRAND gray — real dividers */
+
+  /* ── ink ── */
+  --color-ink: #0a0a0a; /* body. NOT #000 — pure black shimmers at 13px */
+  --color-ink-2: #55595f; /* labels, secondary */
+  --color-ink-3: #8a9099; /* placeholder, the "not known" dash */
+  --color-brand-ink: #000000; /* BRAND black. Used once: the wordmark. */
+
+  /* ── accent (brand) ── */
+  --color-accent: #2874fc; /* skyline blue: links, buttons, focus */
+  --color-accent-hover: #1a5fe0;
+  --color-accent-weak: #eaf1fe; /* selected row, chip background */
+  --color-amber: #e0a04a; /* BRAND amber — FILLS/KEYLINES ONLY, never text */
+
+  /* ── structure: panel headers, tab strips, table headers ──
+     A DEEPER shade of the brand blue, deliberately not the accent itself.
+     The accent has one job — "you can click this" — and if a decorative
+     header bar were the same blue, every screen would go ambiguous. */
+  --color-head: #17427f;
+  --color-head-2: #1d5099; /* hover / lighter band */
+  --color-head-ink: #ffffff;
+  --color-head-line: #c6d4ea; /* panel border, tinted to match */
+
+  /* ── semantic: email deliverability ── */
+  --color-good: #1e7f4f;
+  --color-good-bg: #e8f5ee;
+  --color-warn: #b26a00; /* amber as TEXT fails contrast; this passes */
+  --color-warn-bg: #fdf3e3;
+  --color-bad: #c0392b;
+  --color-bad-bg: #fbebe9;
+  --color-null: #6b7280; /* untested / not applicable */
+  --color-null-bg: #f1f3f5;
+
+  /* ── segment keylines ── */
+  --color-seg-investor: #2874fc;
+  --color-seg-business: #e0a04a;
+  --color-seg-intermediary: #6e5ba8;
+  --color-seg-government: #1e7f4f;
+  --color-seg-excluded: #8a9099;
+
+  /* ── type ── */
+  --font-sans: var(--font-inter), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --text-display: 28px;
+  --text-display--line-height: 34px;
+  --text-display--font-weight: 300;
+  --text-h1: 20px;
+  --text-h1--line-height: 26px;
+  --text-h1--font-weight: 600;
+  --text-h2: 15px;
+  --text-h2--line-height: 20px;
+  --text-h2--font-weight: 600;
+  --text-body: 14px;
+  --text-body--line-height: 20px;
+  --text-table: 13px; /* the workhorse — 9/10 of the pixels here */
+  --text-table--line-height: 18px;
+  --text-label: 11px;
+  --text-label--line-height: 14px;
+  --text-label--letter-spacing: 0.06em;
+  --text-micro: 11px;
+  --text-micro--line-height: 14px;
+
+  /* ── density ── */
+  --radius-card: 8px;
+}
+
+:root {
+  --row-h: 34px;
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px var(--color-accent);
+}
+
+html {
+  background: var(--color-ground);
+}
+
+body {
+  background: var(--color-ground);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  line-height: var(--text-body--line-height);
+  /* tnum: figures line up in columns. zero: slashed zero.
+     A misread digit in an AUM figure is a real business error here. */
+  font-feature-settings: "tnum" 1, "zero" 1, "cv05" 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+*:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: 4px;
+}
+
+/* Native disclosure — keyboard and screen-reader correct for free,
+   and it works before hydration. */
+details > summary {
+  list-style: none;
+  cursor: pointer;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+::placeholder {
+  color: var(--color-ink-3);
+}
